@@ -1,4 +1,5 @@
 import Avatar from '@mui/material/Avatar';
+import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
 
 // function Copyright(props) {
@@ -31,17 +32,16 @@ const defaultTheme = createTheme();
 
 
 export default function SignUp(){
+    const [pricingTier, setPricingTier] = React.useState('');
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
             email:data.get('email'),
-            password: data.get('password'),
+            
         });
-        const handleChange =(event: SelectChangeEvent) =>{
-            setPricingTier(event.target.value as string);
-        }
-    };
+    }
 
     return(
         <ThemeProvider theme={defaultTheme}>
@@ -94,6 +94,29 @@ export default function SignUp(){
                             />
                             </Grid>
                         </Grid>
+                        <Box component={"form"} noValidate onSubmit={handleSubmit} sx={{mt:3}}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id="pricing-tier-list">Pricing</InputLabel>
+                                        <Select
+                                            required
+                                            labelId="pricing-tier-list"
+                                            id="pricingTier"
+                                            value={pricingTier}
+                                            label="Base Pricing Tier"
+                                            onChange={(e) => setPricingTier(e.target.value)}
+                                            >
+                                            <MenuItem value="1">1</MenuItem>
+                                            <MenuItem value="2">2</MenuItem>
+                                            <MenuItem value="3">3</MenuItem>
+                                            <MenuItem value="4">4</MenuItem>
+                                            <MenuItem value="5">5</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+                        </Box>
                         <Button
                          type="submit"
                         fullWidth
@@ -108,5 +131,8 @@ export default function SignUp(){
                 </Box>
             </Container>
         </ThemeProvider>
-    )
-}
+    );
+  }
+
+
+

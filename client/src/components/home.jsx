@@ -15,6 +15,14 @@ return(
           Search
         </button>
       </form>
+      <div className="container">
+      <div className="row selection">
+        <div className="col-md">Explore</div>
+        <div className="col-md">Open to Work</div>
+        <div className="col-md">Favorites</div>
+        
+      </div>
+    </div>
     </nav>
 )
  }
