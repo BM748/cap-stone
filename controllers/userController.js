@@ -19,7 +19,26 @@ const createUsers = (data, res) => {
   
 }
 
+const loginUser = async(req, res)=>{
+    const{emailId, password} = req.body;
+
+    try{
+        const user = await Models.Users.findOne({where:{emailId}});
+
+        if(user && user.password === password){
+            res.json({loggedIn: true});
+        } else {
+            res.json({loggedIn: false})
+        }
+
+        res.json({data: user})
+    } catch (e){
+        console.error('Error logging in user!', e)
+    }
+}
+
 module.exports = {
     getUsers,
-    createUsers
+    createUsers,
+    loginUser
 }
