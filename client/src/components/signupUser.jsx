@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid';
-
+import React, {useState} from 'react';
 
 // function Copyright(props) {
 //     return (
@@ -25,6 +25,27 @@ const defaultTheme = createTheme();
 
 
 export default function SignUser(){
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState ('');
+    const [userName, setUserName] = useState('');
+    const [password,setPassword] = useState('');
+
+
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+    const handleChangeName = (e) => {
+        setName(e.target.value);
+    }
+    const handleChangeUserName = (e) => {
+        setUserName(e.target.value);
+    }
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -64,6 +85,8 @@ export default function SignUser(){
                             id="name"
                             label="name"
                             autoFocus
+                            value={name}
+                            onChange={handleChangeName}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -72,6 +95,8 @@ export default function SignUser(){
                             fullWidth
                             id="userName"
                             label="user name"
+                            value={userName}
+                            onChange={handleChangeUserName}
                             autoComplete="free solo"
                             />
                         </Grid>
@@ -82,7 +107,20 @@ export default function SignUser(){
                             id="emailId"
                             label="email"
                             autoComplete="email"
+                            value={email}
+                            onChange={handleChangeEmail}
                             />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                required
+                                fullWidth
+                                id="password"
+                                label="Password"
+                                type="password"
+                                value={password}
+                                onChange={handleChangePassword}
+                                />
                             </Grid>
                         </Grid>
                         <Button
