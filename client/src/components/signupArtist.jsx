@@ -1,5 +1,5 @@
 import Avatar from '@mui/material/Avatar';
-import * as React from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -13,18 +13,10 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import axios from "axios"
 
 
-// function Copyright(props) {
-//     return (
-//         <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//             {'Copyright'}
-//             <Link color="inherit" href="htyps://mui.com/">
 
-//             </Link>
-//         </Typography>
-//     );
-// }
 
 const defaultTheme = createTheme();
 
@@ -32,11 +24,40 @@ const defaultTheme = createTheme();
 
 
 export default function SignUp(){
-    const [pricingTier, setPricingTier] = React.useState('');
+    const [pricingTier, setPricingTier] = useState('');
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState ('');
+    const [userName, setUserName] = useState('');
+    const [password,setPassword] = useState('');
+
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+    const handleChangeName = (e) => {
+        setName(e.target.value);
+    }
+    const handleChangeUserName = (e) => {
+        setUserName(e.target.value);
+    }
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+       
+        axios.post('http://localhost:5081/api/artist/create', {
+            userName, 
+            emailId: email,
+            password, 
+            pricingTier,
+            name
+        }).then((result) => {
+            console.log(result)
+        }).catch(e => console.error(e))
+
+
         console.log({
             email:data.get('email'),
             
@@ -73,6 +94,8 @@ export default function SignUp(){
                             id="name"
                             label="name"
                             autoFocus
+                            value={name}
+                            onChange={handleChangeName}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -81,6 +104,8 @@ export default function SignUp(){
                             fullWidth
                             id="userName"
                             label="user name"
+                            value={userName}
+                            onChange={handleChangeUserName}
                             autoComplete="free solo"
                             />
                         </Grid>
@@ -91,7 +116,20 @@ export default function SignUp(){
                             id="emailId"
                             label="email"
                             autoComplete="email"
+                            value={email}
+                            onChange={handleChangeEmail}
                             />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                required
+                                fullWidth
+                                id="password"
+                                label="Password"
+                                type="password"
+                                value={password}
+                                onChange={handleChangePassword}
+                                />
                             </Grid>
                         </Grid>
                         <Box component={"form"} noValidate onSubmit={handleSubmit} sx={{mt:3}}>

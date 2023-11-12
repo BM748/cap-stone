@@ -7,17 +7,40 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignIn({setToken}) {
+  const navigate = useNavigate()
+
     const handleSubmit = (event) =>{
         event.preventDefault();
         const data = new FormData (event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
 
-    };
+
+            const email = data.get("email");
+            const password = data.get("password");
+      
+
+        // assumes user is artist
+        axios.post('http://localhost:5081/api/login/artist', {
+          emailId: email,
+          password,
+      }) .then((result) => {
+        console.log(result)
+        const token = result.data.loggedIn;
+
+        setToken(token);
+        
+        if (token){
+          navigate('/');
+        }
+
+      }) .catch(e => console.error(e))
+
+      }
+
+        
     return (
         <Container component="main" maxWidth="xs">
             <Box

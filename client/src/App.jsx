@@ -10,7 +10,7 @@ import SignUser from './components/signupUser';
 import Home from './components/home';
 
 function App() {
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState();
 
   if(!token) {
     return <SignIn setToken={setToken}/>
