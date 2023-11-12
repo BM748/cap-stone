@@ -9,7 +9,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid';
 import React, {useState} from 'react';
-
+import axios from "axios"
 // function Copyright(props) {
 //     return (
 //         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -49,9 +49,20 @@ export default function SignUser(){
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+
+        axios.post('http://localhost:5081/api/user/create', {
+            userName, 
+            emailId: email,
+            password, 
+            name
+        }).then((result) => {
+            console.log(result)
+        }).catch(e => console.error(e))
+
+
+
         console.log({
             email:data.get('email'),
-            password: data.get('password'),
         });
     };
 
