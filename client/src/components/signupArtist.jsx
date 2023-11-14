@@ -76,7 +76,7 @@ export default function SignUp(){
                     alignItems:'center',
                 }}
                 >
-                    <Avatar sx={{m:1,bgcolor: 'scondary.main'}}>
+                    <Avatar sx={{m:1,bgcolor: 'secondary.main'}}>
                         <BrushIcon />
                     </Avatar>
                      <Typography component="h1" variant="h5">
