@@ -7,7 +7,7 @@ router.post('/artist', (req, res) => {
 })
 
 router.post('/user', (req, res) => {
-    Controllers.userController.login(req,res);
+    Controllers.userController.loginUser(req,res);
 })
 
 
