@@ -78,7 +78,7 @@ export default function SignUser(){
                     alignItems:'center',
                 }}
                 >
-                    <Avatar sx={{m:1,bgcolor: 'scondary.main'}}>
+                    <Avatar sx={{m:1,bgcolor: 'secondary.main'}}>
                         <PersonIcon />
                     </Avatar>
                      <Typography component="h1" variant="h5">
