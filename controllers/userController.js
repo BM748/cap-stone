@@ -23,7 +23,7 @@ const loginUser = async(req, res)=>{
     const{emailId, password} = req.body;
 
     try{
-        const user = await Models.Users.findOne({where:{emailId}});
+        const user = await Models.User.findOne({where:{emailId}});
 
         if(user && user.password === password){
             res.json({loggedIn: true});
