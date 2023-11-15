@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid';
 import React, {useState} from 'react';
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 // function Copyright(props) {
 //     return (
 //         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -24,7 +25,8 @@ import axios from "axios"
 const defaultTheme = createTheme();
 
 
-export default function SignUser(){
+export default function SignUser({setToken}){
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [name, setName] = useState ('');
     const [userName, setUserName] = useState('');
@@ -56,7 +58,19 @@ export default function SignUser(){
             password, 
             name
         }).then((result) => {
+            // setToken
             console.log(result)
+            setToken(result);
+
+            setToken(result);
+            
+            if (result) {
+                navigate('/');
+                return;
+            }
+
+            // llookup in the Login component how we navigate
+            // navigate to the '/' 
         }).catch(e => console.error(e))
 
 
