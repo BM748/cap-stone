@@ -51,7 +51,7 @@ function ArtistGallery() {
             src={images[currentImageIndex]}
             alt={`Image ${currentImageIndex + 1}`}
             className="gallery-image"
-            style={{ width: '200px', height: 'auto' }}
+            style={{ width: '500px', height: 'auto' }}
             onClick={toggleModal}
           />
           <button className="next" onClick={handleNext}>
