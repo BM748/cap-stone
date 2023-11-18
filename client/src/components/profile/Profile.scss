@@ -18,11 +18,11 @@ $secondry-color:rgb(12, 1, 76);
                 height:80%;
                 width:100%;
                 background:$main-color;
-                #prf-bg-img{
-                    height:100vh;
-                    width: 100vw;
-                    margin-top: -12rem;
-                }
+                // #prf-bg-img{
+                //     height:100vh;
+                //     width: 100vw;
+                //     margin-top: -20rem;   //has white line undeath Gallery section
+                // }
             }
             .user-profile-img{
                 position: absolute;
@@ -59,12 +59,12 @@ $secondry-color:rgb(12, 1, 76);
             margin-top: 10rem;
             background: white;
             .right-side{
-                flex:0.70;   
+                flex:0.60;   
                 height: 100%;
 
             }
             .left-side{
-                flex:0.30;
+                flex:0.40;
                 height: 100%;
             }
         }
