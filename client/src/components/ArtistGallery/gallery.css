@@ -1,4 +1,4 @@
-.Main-Artist-GalleryContainer{
+.Main-Artist-GalleryContainer{   
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -7,7 +7,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; 
+    /* this effect where pics we be at */
 }
 
 .content{
@@ -34,10 +35,10 @@
   }
 
   .prev {
-    left: 20px;
-  }
-  
-  .next {
-    right: 10px;
-  }
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
 
