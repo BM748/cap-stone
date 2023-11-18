@@ -10,6 +10,21 @@ const getArtists = (res) => {
     })
 }
 
+const getArtist = (artistId, res) => {
+    Models.Artist.findOne({ where: { id: artistId } })
+        .then(function (data) {
+            if (data) {
+                res.status(200).send({ result: 200, data: data });
+            } else {
+                res.status(404).send({ result: 404, message: 'Artist not found' });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send({ result: 500, message: 'Internal Server Error' });
+        });
+};
+
 const createArtists = (req, res) => {
     Models.Artist.create(req.body).then(function (data) {
         res.send({ result: 200 , data: data})
@@ -30,7 +45,7 @@ const loginArtist = async (req, res) =>{
   
         // Check if given password matches password from Artist in DB
         if (artist && artist.password === password) {
-            res.json({loggedIn: true});
+            res.json({loggedIn: true, artistId: artist.id, userType: 'artist'}); //IF you want to track the loggedIn Artist, then send by the Artist
         } else {
             res.json({loggedIn: false})
         }
@@ -57,6 +72,6 @@ const loginArtist = async (req, res) =>{
 module.exports = {
     getArtists,
     createArtists,
-    loginArtist
-
+    loginArtist,
+    getArtist
 }
