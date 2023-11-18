@@ -61,7 +61,7 @@ export default function Reviews() {
                   <div key={index} className="d-flex flex-start mt-4">
                     <MDBCardImage
                       className="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                      src="https://cdn.discordapp.com/attachments/273604646592053271/1175286871379677265/One_Piece_-_Digital_Colored_Comics_-_Vol.30_Ch.279_-_Pirate_Luffy_vs_God_Enel_-_17.png?ex=656aae31&is=65583931&hm=447b067ab337028c4eb7244e3cb4d432da887b6413820c8485c301bae40d2723&"
                       alt="avatar"
                       width="65"
                       height="65"
